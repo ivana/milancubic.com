@@ -1,0 +1,19 @@
+* {
+  vertical-align: baseline;
+  padding: 0;
+  margin: 0; }
+
+body {
+  font: 14px/1.5 "proxima-nova", "Myriad Pro", helvetica, arial, sans-serif;
+  background: #18191a;
+  color: #303031; }
+
+.centered {
+  margin: 0 auto;
+  width: 1024px; }
+
+h1 {
+  font: inherit; }
+
+ol, ul {
+  list-style-type: none; }

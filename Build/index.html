@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script>
+        setTimeout(function(){
+          ws = new WebSocket('ws://localhost:35353')
+          ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
+        }, 500)
+      </script>
+    <meta charset="UTF-8" />
+    <meta name="author" lang="hr" content="Ivana Vasilj, dev@ivana.im" />
+
+    <title>Milan Cubic | Interface Design</title>
+    <link rel="stylesheet" href="site.css" type="text/css" />
+
+    <script src="//use.typekit.net/slj1kyc.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+  </head>
+
+  <body>
+    <div class="centered">
+
+      <h1>Milan Cubic</h1>
+
+      <nav class="main">
+        <ol>
+          <li><a href="">Interface Design</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">I'd love to hear from you</a></li>
+        </ol>
+      </nav>
+
+      <nav class="scene">
+        <ol>
+          <li><a href="">Prev</a></li>
+          <li><a href="">Next</a></li>
+        </ol>
+      </nav>
+
+      <article class="current">
+        <h1>Ammo Rack, iPad</h1>
+        <div class="popup-desc">
+          <p>For this redesign, Evite asked Fi to bring a fresh, modern look to their site while making the experience more social and fun.</p>
+          <p><a href="" class="goto">Go to case study</a></p>
+        </div>
+        <img src="img/firstborn.jpg" />
+      </article>
+
+    </div>
+
+    <script src="site.js"></script>
+  </body>
+</html>
