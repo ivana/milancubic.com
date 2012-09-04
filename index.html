@@ -12,28 +12,29 @@
     <script>try{Typekit.load();}catch(e){}</script>
   </head>
 
-  <body>
+  <body class="portfolio">
     <div class="centered">
 
       <h1>Milan Cubic</h1>
 
-      <nav class="main">
+      <nav class="main-nav">
         <ol>
-          <li><a href="">Interface Design</a></li>
-          <li><a href="">About</a></li>
-          <li><a href="">I'd love to hear from you</a></li>
+          <li class="portfolio"><a href="">Interface Design</a></li>
+          <li class="about"><a href="">About</a></li>
+          <li><a href=""><img src="<!-- @path envelope.gif -->" alt="">I'd love to hear from you</a></li>
         </ol>
       </nav>
 
-      <nav class="scene">
+      <nav class="scene-nav">
         <ol>
-          <li><a href="">Prev</a></li>
-          <li><a href="">Next</a></li>
+          <!-- <li class="left"><a rel="prev" href=""><img src="<!-- @path left.png -->" alt="previous"></a></li> -->
+          <li class="left"><a class="disabled" rel="prev" href=""><img src="<!-- @path left-disabled.png -->" alt="previous"></a></li>
+          <li class="right"><a rel="next" href=""><img src="<!-- @path right.png -->" alt="next"></a></li>
         </ol>
       </nav>
 
       <article class="current">
-        <h1>Ammo Rack, iPad</h1>
+        <h2>Ammo Rack, iPad</h2>
         <div class="popup-desc">
           <p>For this redesign, Evite asked Fi to bring a fresh, modern look to their site while making the experience more social and fun.</p>
           <p><a class="goto" href="">Go to case study</a></p>
