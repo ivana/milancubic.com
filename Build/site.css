@@ -60,13 +60,14 @@ nav li {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4); }
     .main-nav a:hover {
       color: #fff; }
-    .main-nav a img {
-      position: relative;
-      top: 2px;
-      padding-right: 15px; }
   .portfolio .main-nav .portfolio a, .about .main-nav .about a {
     color: #fff;
     text-shadow: 0 0 4px rgba(255, 255, 255, 0.8); }
+  .portfolio .main-nav .mail a {
+    padding-left: 35px;
+    background: url(img/icons/envelope.gif) no-repeat 0 -1px; }
+    .portfolio .main-nav .mail a:hover {
+      background-image: url(img/icons/envelope-hover.gif); }
 
 .scene-nav {
   text-align: right; }

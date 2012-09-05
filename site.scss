@@ -41,13 +41,17 @@ nav li { display:inline; }
 
   a { text-shadow:1px 1px 1px rgba(0,0,0,.4);
     &:hover { color:#fff; }
-
-    img {
-      position: relative; top: 2px;
-      padding-right: 15px;
-    }
   }
-  .portfolio & .portfolio a, .about & .about a { color:#fff; text-shadow:0 0 4px rgba(255, 255, 255, .8); }
+  .portfolio & .portfolio a, .about & .about a {
+    color:#fff;
+    text-shadow:0 0 4px rgba(255, 255, 255, .8);
+  }
+  .portfolio & .mail a {
+    padding-left: 35px;
+    background: url(envelope.gif) no-repeat 0 -1px;
+
+    &:hover { background-image: url(envelope-hover.gif); }
+  }
 }
 
 .scene-nav {
