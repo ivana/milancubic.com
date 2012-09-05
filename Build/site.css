@@ -82,11 +82,12 @@ nav li {
   .portfolio .main-nav .portfolio a, .about .main-nav .about a {
     color: #fff;
     text-shadow: 0 0 4px rgba(255, 255, 255, 0.8); }
-  .portfolio .main-nav .mail a {
+  .main-nav .mail a {
     padding-left: 35px;
-    background: url(img/icons/envelope.gif) no-repeat 0 -1px; }
-    .portfolio .main-nav .mail a:hover {
-      background-image: url(img/icons/envelope-hover.gif); }
+    background: url(img/icons/envelope.gif) no-repeat;
+    padding-top: 1px; }
+    .about .main-nav .mail a, .main-nav .mail a:hover {
+      background-image: url(img/icons/envelope-white.png); }
 
 .scene-nav, .social-nav {
   text-align: right; }

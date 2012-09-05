@@ -63,11 +63,12 @@ nav li { display:inline; }
     color:#fff;
     text-shadow:0 0 4px rgba(255, 255, 255, .8);
   }
-  .portfolio & .mail a {
+  .mail a {
     padding-left: 35px;
-    background: url(envelope.gif) no-repeat 0 -1px;
+    background: url(envelope.gif) no-repeat;
+    padding-top:1px;
 
-    &:hover { background-image: url(envelope-hover.gif); }
+    .about &, &:hover { background-image: url(envelope-white.png); }
   }
 }
 
