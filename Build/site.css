@@ -53,8 +53,8 @@ header {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  height: 312px;
-  padding-top: 175px; }
+  height: 259px;
+  padding-top: 125px; }
 
 /* nav */
 nav li {
@@ -66,7 +66,7 @@ nav li {
   /* weird webkit bug? */ }
   .main-nav li {
     border-left: 1px solid #222324;
-    padding: 3px 15px;
+    padding: 3px 18px;
     background: transparent; }
     .about .main-nav li {
       border-color: rgba(255, 255, 255, 0.2); }
