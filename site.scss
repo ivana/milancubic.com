@@ -88,6 +88,12 @@ nav li { display:inline; }
   }
   .right a { @include border-radius(0 3px 3px 0); }
 }
+.social-nav { margin-top: -8px;
+  // a { height:35px; display:inline-block; }
+  .twitter a:hover img, .twitter a:active img { background-image: url(twitter-glow.png);}
+  .behance a:hover img, .behance a:active img { background-image: url(behance-glow.png);}
+  .dribbble a:hover img, .dribbble a:active img { background-image: url(dribbble-glow.png);}
+}
 
 /* about */
 .about header {

@@ -123,6 +123,15 @@ nav li {
   -webkit-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0; }
 
+.social-nav {
+  margin-top: -8px; }
+  .social-nav .twitter a:hover img, .social-nav .twitter a:active img {
+    background-image: url(img/icons/twitter-glow.png); }
+  .social-nav .behance a:hover img, .social-nav .behance a:active img {
+    background-image: url(img/icons/behance-glow.png); }
+  .social-nav .dribbble a:hover img, .social-nav .dribbble a:active img {
+    background-image: url(img/icons/dribbble-glow.png); }
+
 /* about */
 .about header {
   background-image: url(img/bgr/about-head.jpg); }
