@@ -8,8 +8,33 @@ ol, ul {
 
 /* layout */
 body {
-  font: 14px/1.5 "proxima-nova", "Myriad Pro", helvetica, arial, sans-serif;
-  padding-bottom: 500px; }
+  font: 14px/1.5 "proxima-nova", "Myriad Pro", helvetica, arial, sans-serif; }
+
+.centered {
+  margin: 0 auto;
+  width: 1024px; }
+
+/* about */
+.about {
+  background: #09080d;
+  color: #66615f; }
+  .about header {
+    background-image: url(img/bgr/about-head.jpg); }
+    .about header + div {
+      background: #fffdfa; }
+  .about h2, .about article a {
+    color: #d42861; }
+  .about h2 {
+    font-size: 72px;
+    font-weight: 700; }
+  .about article {
+    font-size: 24px;
+    padding: 78px; }
+    .about article p {
+      margin: 50px 0;
+      line-height: 1.6; }
+    .about article a:hover {
+      text-decoration: underline; }
 
 .portfolio {
   background-color: #18191a;
@@ -18,14 +43,8 @@ body {
   background-image: -ms-linear-gradient(left, #111111 0, transparent 5%, transparent 95%, #111111);
   background-image: -o-linear-gradient(left, #111111 0, transparent 5%, transparent 95%, #111111);
   background-image: linear-gradient(left, #111111 0, transparent 5%, transparent 95%, #111111);
-  color: #303031; }
-
-.about {
-  background: #09080d; }
-
-.centered {
-  margin: 0 auto;
-  width: 1024px; }
+  color: #303031;
+  padding-bottom: 500px; }
 
 /* headings */
 h1, h2 {
@@ -131,7 +150,3 @@ nav li {
     background-image: url(img/icons/behance-glow.png); }
   .social-nav .dribbble a:hover img, .social-nav .dribbble a:active img {
     background-image: url(img/icons/dribbble-glow.png); }
-
-/* about */
-.about header {
-  background-image: url(img/bgr/about-head.jpg); }
