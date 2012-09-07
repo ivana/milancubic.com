@@ -1,4 +1,6 @@
-# description popup show / hide with animation
+###
+Description popup show / hide with animation
+###
 $(document).on 'click', '.desc h2 a', (e) ->
   el = $(e.target).closest('.desc')
 

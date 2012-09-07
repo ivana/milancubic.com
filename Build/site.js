@@ -1,3 +1,9 @@
+
+/*
+Description popup show / hide with animation
+*/
+
+
 (function() {
 
   $(document).on('click', '.desc h2 a', function(e) {

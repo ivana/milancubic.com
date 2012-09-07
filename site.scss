@@ -1,6 +1,7 @@
 /* general */
 * { padding:0; margin:0; }
 ol, ul { list-style-type:none; }
+b, strong { font-weight:600; }
 
 /* layout */
 body {
@@ -81,8 +82,7 @@ $about-pad: 78px;
     font-size:15px;
     @include box-sizing(border-box);
     width:320px; padding:12px 15px; margin: -50px 0 0 20px;
-    position:relative;
-    z-index:11;
+    position:relative; z-index:11;
     &.popup {
       @include background-image(linear-gradient(#fafafb, #fdfefe));
       @include border-radius(4px);
@@ -96,7 +96,9 @@ $about-pad: 78px;
     p {
       color:#5f6266; padding-bottom:20px;
       &:last-child { padding-bottom:0; }
-      a { color:#477b97; }
+      a { color:#477b97;
+        &:hover { text-decoration:underline; }
+      }
     }
   }
 
@@ -104,7 +106,6 @@ $about-pad: 78px;
     color:#666;
     padding-bottom:10px;
     border-bottom: 1px dashed transparent;
-    b { font-weight:600; }
     a {
       background-image: url(down-arrow.png);
     }

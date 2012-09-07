@@ -6,6 +6,9 @@
 ol, ul {
   list-style-type: none; }
 
+b, strong {
+  font-weight: 600; }
+
 /* layout */
 body {
   font: 14px/1.5 "proxima-nova", "Myriad Pro", helvetica, arial, sans-serif; }
@@ -136,12 +139,12 @@ header {
         padding-bottom: 0; }
       .portfolio .desc p a {
         color: #477b97; }
+        .portfolio .desc p a:hover {
+          text-decoration: underline; }
   .portfolio h2 {
     color: #666;
     padding-bottom: 10px;
     border-bottom: 1px dashed transparent; }
-    .portfolio h2 b {
-      font-weight: 600; }
     .portfolio h2 a {
       background-image: url(img/icons/down-arrow.png); }
   .portfolio figure {
