@@ -10,12 +10,13 @@
       </script>
 
 <meta charset="UTF-8" />
-<meta lang="hr" content="Ivana Vasilj, dev@ivana.im" name="author" />
+<meta name="author" lang="hr" content="Ivana Vasilj, dev@ivana.im" />
 
-<link type="text/css" rel="stylesheet" href="site.css" />
+<link type="text/css" href="site.css" rel="stylesheet" />
 
 <script src="//use.typekit.net/slj1kyc.js"></script>
 <script>try{Typekit.load();}catch(e){}</script>
+
   </head>
 
   <body class="portfolio">
@@ -26,32 +27,33 @@
 
 <nav class="main-nav">
   <ol>
-    <li class="portfolio current"><a class=" current" href="index.html">Interface Design</a></li>
+    <li class="portfolio current"><a href="index.html" class=" current">Interface Design</a></li>
     <li class="about"><a href="about.html">About</a></li>
     <li class="mail"><a href="mailto:milan@milancubic.com">I'd love to hear from you</a></li>
   </ol>
 </nav>
 
+
         <nav class="scene-nav">
           <ol>
             <!-- <li class="left"><a rel="prev" href=""><img src="img/icons/left.png" alt="previous"></a></li> -->
-            <li class="left"><a class="disabled" rel="prev" href=""><img src="img/icons/left-disabled.png" alt="previous" /></a></li>
-            <li class="right"><a rel="next" href=""><img src="img/icons/right.png" alt="next" /></a></li>
+            <li class="left"><a href="" rel="prev" class="disabled"><img alt="previous" src="img/icons/left-disabled.png" /></a></li>
+            <li class="right"><a href="" rel="next"><img alt="next" src="img/icons/right.png" /></a></li>
           </ol>
         </nav>
       </header>
 
       <article class="current">
-        <div class="desc popup">
-          <h2><a class="with-icon" href="#"><b>Ammo Rack</b>, iPad</a></h2>
+        <div class="desc"> <!-- add class popup for description to show with animation -->
+          <h2><a href="#" class="with-icon"><b>Ammo Rack</b>, iPad</a></h2>
           <div>
             <p>For this redesign, <a href="">Evite</a> asked Fi to bring a fresh, modern look to their site while making the experience more social and fun.</p>
-            <p><a class="with-icon goto" href="">Go to case study</a></p>
+            <p><a href="" class="with-icon goto">Go to case study</a></p>
           </div>
         </div>
 
         <figure>
-          <img src="img/firstborn.jpg" alt="screenshot description" />
+          <img alt="screenshot description" src="img/firstborn.jpg" />
         </figure>
 
         <!-- figure = slide = img + desc -->
@@ -59,6 +61,7 @@
 
     </div>
 
-    <script src="site.js"></script>
+    <script src="zepto.min.js"></script>
+    <script type="text/javascript" src="site.js"></script>
   </body>
 </html>
