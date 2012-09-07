@@ -10,12 +10,14 @@ $(document).on 'click', '.desc h2 a', (e) ->
     # show description
     oldEl = el
     el = el.clone().insertBefore oldEl
-    el.css
+
+    properties =
       'z-index': oldEl.css('z-index') + 1
       'position': 'absolute'
       'margin-top': '0px'
       'opacity': 0.2
-      ($.fx.cssPrefix + 'transform'): 'translate3d(0,-5px,0)'
+    properties["#{$.fx.cssPrefix}transform"] = 'translate3d(0,-5px,0)'
+    el.css properties
 
     el.toggleClass('popup').animate({opacity: 1, translate3d: '0,0,0'}, 300, 'cubic-bezier(.6, .1, .2, .7)')
 
