@@ -102,7 +102,8 @@ header {
   background-image: -ms-linear-gradient(left, #111111 0, transparent 5%, transparent 95%, #111111);
   background-image: -o-linear-gradient(left, #111111 0, transparent 5%, transparent 95%, #111111);
   background-image: linear-gradient(left, #111111 0, transparent 5%, transparent 95%, #111111);
-  color: #303031; }
+  color: #303031;
+  padding-bottom: 500px; }
   .portfolio .desc {
     font-size: 15px;
     -webkit-box-sizing: border-box;
@@ -147,12 +148,19 @@ header {
     border-bottom: 1px dashed transparent; }
     .portfolio h2 a {
       background-image: url(img/icons/down-arrow.png); }
-  .portfolio figure {
-    position: absolute;
-    top: 258px;
-    z-index: 10;
-    padding-bottom: 500px;
-    overflow: hidden; }
+
+.filmstrip {
+  zoom: 1;
+  width: 100000px;
+  position: relative; }
+  .filmstrip:before, .filmstrip:after {
+    content: "";
+    display: table; }
+  .filmstrip:after {
+    clear: both; }
+  .filmstrip figure {
+    float: left;
+    margin-right: 200px; }
 
 /* nav */
 nav li {

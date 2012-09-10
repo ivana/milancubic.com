@@ -14,27 +14,43 @@
         <nav class="scene-nav">
           <ol>
             <!-- <li class="left"><a rel="prev" href=""><img src="<!-- @path left.png -->" alt="previous"></a></li> -->
-            <li class="left"><a class="disabled" rel="prev" href=""><img src="<!-- @path left-disabled.png -->" alt="previous"></a></li>
-            <li class="right"><a rel="next" href=""><img src="<!-- @path right.png -->" alt="next"></a></li>
+            <li class="left"><a class="disabled" href="#prev"><img src="<!-- @path left-disabled.png -->" alt="previous"></a></li>
+            <li class="right"><a href="#next"><img src="<!-- @path right.png -->" alt="next"></a></li>
           </ol>
         </nav>
       </header>
 
-      <article class="current">
-        <div class="desc"> <!-- add class popup for description to show with animation -->
-          <h2><a href="#" class="with-icon"><b>Ammo Rack</b>, iPad</a></h2>
-          <div>
-            <p>For this redesign, <a href=""><strong>Evite</strong></a> asked Fi to bring a fresh, modern look to their site while making the experience more social and fun.</p>
-            <p><a class="with-icon goto" href="">Go to case study</a></p>
+      <div class="filmstrip">
+        <!-- article = project -->
+        <article class="current">
+
+          <!-- project description -->
+          <div class="desc"> <!-- add class popup for description to show with animation -->
+            <h2><a href="#" class="with-icon"><b>Ammo Rack</b>, iPad</a></h2>
+            <div>
+              <p>For this redesign, <a href=""><strong>Evite</strong></a> asked Fi to bring a fresh, modern look to their site while making the experience more social and fun.</p>
+              <p><a class="with-icon goto" href="#next">Go to case study</a></p>
+            </div>
           </div>
-        </div>
 
-        <figure>
-          <img src="<!-- @path firstborn.jpg -->" alt="screenshot description">
-        </figure>
+          <!-- figure = slide = img + desc -->
+          <figure class="current">
+            <img src="<!-- @path firstborn.jpg -->" alt="screenshot description">
+          </figure>
 
-        <!-- figure = slide = img + desc -->
-      </article>
+          <figure class="next">
+            <img src="<!-- @path introduction.jpg -->" alt="screenshot description 2">
+          </figure>
+
+          <figure>
+            <img src="<!-- @path introduction.jpg -->" alt="screenshot description 2">
+          </figure>
+
+          <figure>
+            <img src="<!-- @path introduction.jpg -->" alt="screenshot description 2">
+          </figure>
+        </article>
+      </div>
 
     </div>
 

@@ -4,11 +4,13 @@ ol, ul { list-style-type:none; }
 b, strong { font-weight:600; }
 
 /* layout */
+$header-h: 258px;
+$site-w: 1024px;
 body {
   font:14px/1.5 "proxima-nova", "Myriad Pro", helvetica, arial, sans-serif;
 }
 .centered {
-  margin:0 auto; width:1024px;
+  margin:0 auto; width: $site-w;
 }
 
 /* headings */
@@ -31,7 +33,6 @@ a { color:inherit; text-decoration:none; }
 .goto { padding: 2px 18px 0 0; background-image: url(goto-arrow.png); }
 
 /* site */
-$header-h: 258px;
 header {
   @include box-sizing(border-box);
   height: $header-h;
@@ -77,6 +78,7 @@ $about-pad: 78px;
 .portfolio {
   background-color:#18191a; @include background-image(linear-gradient(left, #111 0, transparent 5%, transparent 95%, #111));
   color:#303031;
+  padding-bottom:500px;
 
   .desc {
     font-size:15px;
@@ -110,9 +112,15 @@ $about-pad: 78px;
       background-image: url(down-arrow.png);
     }
   }
+}
+.filmstrip {
+  @include clearfix;
+  width:100000px;
+  position:relative;
+
   figure {
-    position:absolute; top:$header-h; z-index:10;
-    padding-bottom:500px; overflow:hidden;
+    float: left;
+    margin-right:200px;
   }
 }
 
