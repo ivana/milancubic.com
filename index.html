@@ -6,19 +6,18 @@
   </head>
 
   <body class="portfolio">
-    <div class="centered">
+    <header>
+      <!-- @include _header-common.html -->
 
-      <header>
-        <!-- @include _header-common.html -->
+      <nav class="scene-nav">
+        <ol>
+          <li class="left"><a class="disabled" href="#prev"><span>prev</span></a></li>
+          <li class="right"><a href="#next"><span>next</span></a></li>
+        </ol>
+      </nav>
+    </header>
 
-        <nav class="scene-nav">
-          <ol>
-            <li class="left"><a class="disabled" href="#prev"><span>prev</span></a></li>
-            <li class="right"><a href="#next"><span>next</span></a></li>
-          </ol>
-        </nav>
-      </header>
-
+    <div class="container"><div>
       <div class="filmstrip">
         <!-- article = project -->
         <article class="current">
@@ -50,8 +49,7 @@
           </figure>
         </article>
       </div>
-
-    </div>
+    </div></div>
 
     <script src="zepto.min.js"></script>
     <!-- @javascript site.coffee -->
