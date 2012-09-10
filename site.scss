@@ -160,18 +160,35 @@ nav li { display:inline; }
 .scene-nav, .social { text-align:right; }
 .scene-nav {
   a {
+    display:inline-block;
     border:1px solid #000;
-    padding:6px 10px 1px; @include background-image(linear-gradient(#262626, #171717));
-
-    &:not(.disabled):active { @include background-image(linear-gradient(#1c1c1c, #262626)); }
-    &:not(.disabled):hover { @include background-image(linear-gradient(#2c2c2c, #1a1a1a)); }
+    width:32px; height:22px;
+    background-repeat: no-repeat;
+    background-position: center;
 
     &.disabled:hover { cursor:default; }
+
+    span { display:none; }
   }
-  .left { margin-right:-4px;
-    a { @include border-radius(3px 0 0 3px); }
+  .left a {
+    margin-right:-4px;
+    @include border-radius(3px 0 0 3px);
+    @include background-image(url(left.png), linear-gradient(#262626, #171717));
+
+    &:not(.disabled):hover { @include background-image(url(left.png), linear-gradient(#2c2c2c, #1a1a1a)); }
+    &:not(.disabled):active { @include background-image(url(left.png), linear-gradient(#1c1c1c, #262626)); }
+
+    &.disabled { @include background-image(url(left-disabled.png), linear-gradient(#262626, #171717)); }
   }
-  .right a { @include border-radius(0 3px 3px 0); }
+  .right a {
+    @include border-radius(0 3px 3px 0);
+    @include background-image(url(right.png), linear-gradient(#262626, #171717));
+
+    &:not(.disabled):hover { @include background-image(url(right.png), linear-gradient(#2c2c2c, #1a1a1a)); }
+    &:not(.disabled):active { @include background-image(url(right.png), linear-gradient(#1c1c1c, #262626)); }
+
+    &.disabled { @include background-image(url(right-disabled.png), linear-gradient(#262626, #171717)); }
+  }
 }
 
 .social { margin-top: -8px;
