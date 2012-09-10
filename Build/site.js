@@ -47,9 +47,13 @@ Description popup show / hide with animation
 
     function FilmStrip(strip) {
       this.strip = $(strip);
-      this.currentFigure = this.strip.find('figure').first();
+      this.currentFigure = this.figures().first();
       this.currentPosition = 0;
     }
+
+    FilmStrip.prototype.figures = function() {
+      return this.strip.find('figure');
+    };
 
     FilmStrip.prototype.next = function() {
       return this.moveToFigure(this.currentFigure.next());
@@ -74,22 +78,38 @@ Description popup show / hide with animation
       }, 300, 'cubic-bezier(.6, .1, .2, .7)');
     };
 
+    FilmStrip.prototype.hasPrev = function() {
+      return this.figures().index(this.currentFigure) > 0;
+    };
+
+    FilmStrip.prototype.hasNext = function() {
+      return this.figures().index(this.currentFigure) < this.figures().size() - 1;
+    };
+
     return FilmStrip;
 
   })();
 
   $(function() {
-    return filmStrip = new FilmStrip('.filmstrip');
+    return window.filmStrip = filmStrip = new FilmStrip('.filmstrip');
   });
 
-  $(document).on('click', 'a[href="#next"]:not(.disabled)', function(e) {
-    filmStrip.next();
-    return false;
-  });
+  /*
+  Prev / Next transitioning
+  */
 
-  $(document).on('click', 'a[href="#prev"]', function(e) {
-    filmStrip.prev();
-    return false;
+
+  $(document).on('click', '.scene-nav a', function(e) {
+    var link, method, nav;
+    link = $(this);
+    e.preventDefault();
+    if (!link.hasClass('disabled')) {
+      method = link.attr('href').replace('#', '');
+      filmStrip[method]();
+      nav = link.closest('.scene-nav');
+      nav.find('a[href="#next"]').toggleClass('disabled', !filmStrip.hasNext());
+      return nav.find('a[href="#prev"]').toggleClass('disabled', !filmStrip.hasPrev());
+    }
   });
 
 }).call(this);

@@ -35,8 +35,11 @@ filmStrip = null
 class FilmStrip
   constructor: (strip) ->
     @strip = $(strip)
-    @currentFigure = @strip.find('figure').first()
+    @currentFigure = @figures().first()
     @currentPosition = 0
+
+  figures: ->
+    @strip.find('figure')
 
   next: ->
     @moveToFigure @currentFigure.next()
@@ -53,16 +56,26 @@ class FilmStrip
     @currentPosition -= delta
     @strip.animate { translate3d: "#{@currentPosition}px,0,0" }, 300, 'cubic-bezier(.6, .1, .2, .7)'
 
+  hasPrev: ->
+    @figures().index(@currentFigure) > 0
+
+  hasNext: ->
+    @figures().index(@currentFigure) < @figures().size() - 1
+
 $ ->
-  filmStrip = new FilmStrip('.filmstrip')
+  window.filmStrip = filmStrip = new FilmStrip('.filmstrip')
 
-# next / previous slide
-$(document).on 'click', 'a[href="#next"]:not(.disabled)', (e) ->
-  filmStrip.next()
-  # if filmStrip.isLast()
-  #   disable next button
-  false
+###
+Prev / Next transitioning
+###
 
-$(document).on 'click', 'a[href="#prev"]', (e) ->
-  filmStrip.prev()
-  false
+$(document).on 'click', '.scene-nav a', (e) ->
+  link = $(this)
+  e.preventDefault()
+  unless link.hasClass 'disabled'
+    method = link.attr('href').replace '#', ''
+    filmStrip[method]()
+
+    nav = link.closest('.scene-nav')
+    nav.find('a[href="#next"]').toggleClass 'disabled', !filmStrip.hasNext()
+    nav.find('a[href="#prev"]').toggleClass 'disabled', !filmStrip.hasPrev()
