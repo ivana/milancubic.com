@@ -11,16 +11,20 @@ $(document).on 'click', '.desc h2 a', (e) ->
   else
     # show description
     oldEl = el
-    el = el.clone().insertBefore oldEl
+    el = el.clone()
 
-    properties =
-      'z-index': oldEl.css('z-index') + 1
+    el.animate
+      'z-index': Number(oldEl.css('z-index')) + 1
       'position': 'absolute'
       'margin-top': '0px'
       'opacity': 0.2
-    properties["#{$.fx.cssPrefix}transform"] = 'translate3d(0,-5px,0)'
-    el.css properties
+      translate3d: '0,-5px,0'
+    , 0, null, ->
+      el.insertBefore(oldEl).
+        toggleClass('popup').
+        animate({opacity: 1, translate3d: '0,0,0'}, 300, 'cubic-bezier(.6, .1, .2, .7)')
 
-    el.toggleClass('popup').animate({opacity: 1, translate3d: '0,0,0'}, 300, 'cubic-bezier(.6, .1, .2, .7)')
+  false
+
 
   false
