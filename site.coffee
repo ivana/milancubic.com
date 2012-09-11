@@ -72,7 +72,7 @@ class FilmStrip
       $('.scene-nav').find('a[href="#prev"]').toggleClass 'disabled', !filmStrip.hasPrev()
 
       currentFigure = filmStrip.currentFigure
-      currentFigure.children('a[href^="#"]').attr 'href', '#'
+      currentFigure.children('a[href^="#"]').attr 'href', '#next'
       currentFigure.next().children('a[href^="#"]').attr 'href', '#next'
       currentFigure.prev().children('a[href^="#"]').attr 'href', '#prev'
 
