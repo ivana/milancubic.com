@@ -77,7 +77,7 @@ class FilmStrip
       if filmStrip.hasNext()
         currentFigure.children('a[href^="#"]').attr 'href', '#next'
       else
-        currentFigure.children('a[href^="#"]').attr 'href', '#' # what when on last?
+        currentFigure.children('a[href^="#"]').attr 'href', '#prev' # what when on last?
 
 $ ->
   window.filmStrip = filmStrip = new FilmStrip('.filmstrip')

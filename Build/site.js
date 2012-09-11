@@ -100,7 +100,7 @@ Description popup show / hide with animation
         if (filmStrip.hasNext()) {
           return currentFigure.children('a[href^="#"]').attr('href', '#next');
         } else {
-          return currentFigure.children('a[href^="#"]').attr('href', '#');
+          return currentFigure.children('a[href^="#"]').attr('href', '#prev');
         }
       }
     };
