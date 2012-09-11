@@ -86,6 +86,21 @@ Description popup show / hide with animation
       return this.figures().index(this.currentFigure) < this.figures().size() - 1;
     };
 
+    FilmStrip.prototype.transition = function(link, e) {
+      var currentFigure, method;
+      e.preventDefault();
+      method = link.attr('href').replace('#', '');
+      if (!link.hasClass('disabled' || (method === 'next' || method === 'prev'))) {
+        filmStrip[method]();
+        $('.scene-nav').find('a[href="#next"]').toggleClass('disabled', !filmStrip.hasNext());
+        $('.scene-nav').find('a[href="#prev"]').toggleClass('disabled', !filmStrip.hasPrev());
+        currentFigure = filmStrip.currentFigure;
+        currentFigure.children('a[href^="#"]').attr('href', '#');
+        currentFigure.next().children('a[href^="#"]').attr('href', '#next');
+        return currentFigure.prev().children('a[href^="#"]').attr('href', '#prev');
+      }
+    };
+
     return FilmStrip;
 
   })();
@@ -94,22 +109,8 @@ Description popup show / hide with animation
     return window.filmStrip = filmStrip = new FilmStrip('.filmstrip');
   });
 
-  /*
-  Prev / Next transitioning
-  */
-
-
-  $(document).on('click', '.scene-nav a', function(e) {
-    var link, method, nav;
-    link = $(this);
-    e.preventDefault();
-    if (!link.hasClass('disabled')) {
-      method = link.attr('href').replace('#', '');
-      filmStrip[method]();
-      nav = link.closest('.scene-nav');
-      nav.find('a[href="#next"]').toggleClass('disabled', !filmStrip.hasNext());
-      return nav.find('a[href="#prev"]').toggleClass('disabled', !filmStrip.hasPrev());
-    }
+  $(document).on('click', '.scene-nav a, figure a[href^="#"]', function(e) {
+    return filmStrip.transition($(this), e);
   });
 
 }).call(this);

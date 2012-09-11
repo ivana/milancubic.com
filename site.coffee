@@ -62,20 +62,23 @@ class FilmStrip
   hasNext: ->
     @figures().index(@currentFigure) < @figures().size() - 1
 
+  transition: (link, e) ->
+    e.preventDefault()
+    method = link.attr('href').replace '#', ''
+    if not link.hasClass 'disabled' or method in ['next', 'prev'] # buttons
+      filmStrip[method]()
+
+      $('.scene-nav').find('a[href="#next"]').toggleClass 'disabled', !filmStrip.hasNext()
+      $('.scene-nav').find('a[href="#prev"]').toggleClass 'disabled', !filmStrip.hasPrev()
+
+      currentFigure = filmStrip.currentFigure
+      currentFigure.children('a[href^="#"]').attr 'href', '#'
+      currentFigure.next().children('a[href^="#"]').attr 'href', '#next'
+      currentFigure.prev().children('a[href^="#"]').attr 'href', '#prev'
+
 $ ->
   window.filmStrip = filmStrip = new FilmStrip('.filmstrip')
 
-###
-Prev / Next transitioning
-###
+$(document).on 'click', '.scene-nav a, figure a[href^="#"]', (e) ->
+  filmStrip.transition $(this), e
 
-$(document).on 'click', '.scene-nav a', (e) ->
-  link = $(this)
-  e.preventDefault()
-  unless link.hasClass 'disabled'
-    method = link.attr('href').replace '#', ''
-    filmStrip[method]()
-
-    nav = link.closest('.scene-nav')
-    nav.find('a[href="#next"]').toggleClass 'disabled', !filmStrip.hasNext()
-    nav.find('a[href="#prev"]').toggleClass 'disabled', !filmStrip.hasPrev()
