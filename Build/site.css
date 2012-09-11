@@ -104,6 +104,8 @@ header {
   background-image: linear-gradient(left, #111111 0, transparent 5%, transparent 95%, #111111);
   color: #303031;
   padding-bottom: 500px; }
+  .portfolio header {
+    background-image: url(img/bgr/grainy-glow.jpg); }
   .portfolio .desc {
     font-size: 15px;
     -webkit-box-sizing: border-box;

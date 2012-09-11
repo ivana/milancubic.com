@@ -80,9 +80,11 @@ $about-pad: 78px;
   color:#303031;
   padding-bottom:500px;
 
-  header, footer {
-    @extend .centered;
+  header {
+    background-image: url(grainy-glow.jpg);
+    // @include background-image(radial-gradient(top center, circle cover, #26282a, #18191a));
   }
+  header, footer { @extend .centered; }
 
   .desc {
     font-size:15px;
