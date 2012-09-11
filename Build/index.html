@@ -10,9 +10,9 @@
       </script>
 
 <meta charset="UTF-8" />
-<meta content="Ivana Vasilj, dev@ivana.im" lang="hr" name="author" />
+<meta content="Ivana Vasilj, dev@ivana.im" name="author" lang="hr" />
 
-<link href="site.css" type="text/css" rel="stylesheet" />
+<link type="text/css" href="site.css" rel="stylesheet" />
 
 <script src="//use.typekit.net/slj1kyc.js"></script>
 <script>try{Typekit.load();}catch(e){}</script>
@@ -34,7 +34,7 @@
 
       <nav class="scene-nav">
         <ol>
-          <li class="left"><a class="disabled" href="#prev"><span>prev</span></a></li>
+          <li class="left"><a href="#prev" class="disabled"><span>prev</span></a></li>
           <li class="right"><a href="#next"><span>next</span></a></li>
         </ol>
       </nav>
@@ -43,38 +43,60 @@
     <div class="container"><div>
       <div class="filmstrip">
         <!-- article = project -->
-        <article class="current">
+        <article>
 
           <!-- project description -->
           <div class="desc"> <!-- add class popup for description to show with animation -->
             <h2><a class="with-icon" href=""><b>Ammo Rack</b>, iPad</a></h2>
             <div>
               <p>For this redesign, <a href=""><strong>Evite</strong></a> asked Fi to bring a fresh, modern look to their site while making the experience more social and fun.</p>
-              <p><a class="with-icon goto" href="#next">Go to case study</a></p>
+              <p><a href="#next" class="with-icon goto">Go to case study</a></p>
             </div>
           </div>
 
           <!-- project slides -->
           <figure>
-            <a href="#next"><img src="img/firstborn.jpg" alt="screenshot description" /></a>
+            <a href="#next"><img alt="screenshot description" src="img/firstborn.jpg" /></a>
           </figure>
 
           <figure>
-            <a href="#next"><img src="img/introduction.jpg" alt="screenshot description 2" /></a>
+            <a href="#next"><img alt="screenshot description 2" src="img/introduction.jpg" /></a>
           </figure>
 
           <figure>
-            <a href="#"><img src="img/introduction.jpg" alt="screenshot description 2" /></a>
+            <a href="#"><img alt="screenshot description 2" src="img/introduction.jpg" /></a>
           </figure>
 
           <figure>
-            <a href="#"><img src="img/introduction.jpg" alt="screenshot description 2" /></a>
+            <a href="#"><img alt="screenshot description 2" src="img/introduction.jpg" /></a>
+          </figure>
+        </article>
+
+        <article>
+          <div class="desc"> <!-- add class popup for description to show with animation -->
+            <h2><a class="with-icon" href=""><b>Ammo Rack</b>, iPad</a></h2>
+            <div>
+              <p>For this redesign, <a href=""><strong>Evite</strong></a> asked Fi to bring a fresh, modern look to their site while making the experience more social and fun.</p>
+              <p><a href="#next" class="with-icon goto">Go to case study</a></p>
+            </div>
+          </div>
+
+          <figure>
+            <a href="#"><img alt="screenshot description" src="img/firstborn.jpg" /></a>
+          </figure>
+
+          <figure>
+            <a href="#"><img alt="screenshot description 2" src="img/introduction.jpg" /></a>
+          </figure>
+
+          <figure>
+            <a href="#"><img alt="screenshot description 2" src="img/introduction.jpg" /></a>
           </figure>
         </article>
       </div>
     </div></div>
 
     <script src="zepto.min.js"></script>
-    <script src="site.js" type="text/javascript"></script>
+    <script type="text/javascript" src="site.js"></script>
   </body>
 </html>

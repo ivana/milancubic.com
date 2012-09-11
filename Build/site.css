@@ -167,6 +167,8 @@ header {
   .filmstrip figure {
     float: left;
     margin-right: 200px; }
+  .filmstrip article {
+    float: left; }
 
 /* nav */
 nav li {

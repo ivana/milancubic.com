@@ -41,10 +41,13 @@ class FilmStrip
   figures: ->
     @strip.find('figure')
 
+  index: ->
+    @figures().index(@currentFigure)
+
   next: ->
-    @moveToFigure @currentFigure.next()
+    @moveToFigure @nextFigure()
   prev: ->
-    @moveToFigure @currentFigure.prev()
+    @moveToFigure @prevFigure()
 
   moveToFigure: (figure) ->
     previousOffset = @currentFigure.offset().left
@@ -57,10 +60,16 @@ class FilmStrip
     @strip.animate { translate3d: "#{@currentPosition}px,0,0" }, 300, 'cubic-bezier(.6, .1, .2, .7)'
 
   hasPrev: ->
-    @figures().index(@currentFigure) > 0
+    @index() > 0
 
   hasNext: ->
-    @figures().index(@currentFigure) < @figures().size() - 1
+    @index() < @figures().size() - 1
+
+  prevFigure: ->
+    @figures().eq(@index() - 1)
+
+  nextFigure: ->
+    @figures().eq(@index() + 1)
 
   transition: (link, e) ->
     e.preventDefault()
@@ -71,13 +80,12 @@ class FilmStrip
       $('.scene-nav').find('a[href="#next"]').toggleClass 'disabled', !filmStrip.hasNext()
       $('.scene-nav').find('a[href="#prev"]').toggleClass 'disabled', !filmStrip.hasPrev()
 
-      currentFigure = filmStrip.currentFigure
-      currentFigure.next().children('a[href^="#"]').attr 'href', '#next'
-      currentFigure.prev().children('a[href^="#"]').attr 'href', '#prev'
+      filmStrip.nextFigure().children('a[href^="#"]').attr 'href', '#next'
+      filmStrip.prevFigure().children('a[href^="#"]').attr 'href', '#prev'
       if filmStrip.hasNext()
-        currentFigure.children('a[href^="#"]').attr 'href', '#next'
+        filmStrip.currentFigure.children('a[href^="#"]').attr 'href', '#next'
       else
-        currentFigure.children('a[href^="#"]').attr 'href', '#prev' # what when on last?
+        filmStrip.currentFigure.children('a[href^="#"]').attr 'href', '#prev' # what when on last?
 
 $ ->
   window.filmStrip = filmStrip = new FilmStrip('.filmstrip')
@@ -87,7 +95,7 @@ $(document).on 'click', '[href="#next"], [href="#prev"]', (e) ->
 
   # hide popup if go to case study is target
   el = $(e.target).closest('.desc')
-  if el.length
+  if el.size()
     el.animate {opacity: 0, translate3d: '0,5px,0'}, 300, 'cubic-bezier(.6, .1, .2, .7)', ->
       el.remove()
 

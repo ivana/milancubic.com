@@ -55,12 +55,16 @@ Description popup show / hide with animation
       return this.strip.find('figure');
     };
 
+    FilmStrip.prototype.index = function() {
+      return this.figures().index(this.currentFigure);
+    };
+
     FilmStrip.prototype.next = function() {
-      return this.moveToFigure(this.currentFigure.next());
+      return this.moveToFigure(this.nextFigure());
     };
 
     FilmStrip.prototype.prev = function() {
-      return this.moveToFigure(this.currentFigure.prev());
+      return this.moveToFigure(this.prevFigure());
     };
 
     FilmStrip.prototype.moveToFigure = function(figure) {
@@ -79,28 +83,35 @@ Description popup show / hide with animation
     };
 
     FilmStrip.prototype.hasPrev = function() {
-      return this.figures().index(this.currentFigure) > 0;
+      return this.index() > 0;
     };
 
     FilmStrip.prototype.hasNext = function() {
-      return this.figures().index(this.currentFigure) < this.figures().size() - 1;
+      return this.index() < this.figures().size() - 1;
+    };
+
+    FilmStrip.prototype.prevFigure = function() {
+      return this.figures().eq(this.index() - 1);
+    };
+
+    FilmStrip.prototype.nextFigure = function() {
+      return this.figures().eq(this.index() + 1);
     };
 
     FilmStrip.prototype.transition = function(link, e) {
-      var currentFigure, method;
+      var method;
       e.preventDefault();
       if (!link.hasClass('disabled')) {
         method = link.attr('href').replace('#', '');
         filmStrip[method]();
         $('.scene-nav').find('a[href="#next"]').toggleClass('disabled', !filmStrip.hasNext());
         $('.scene-nav').find('a[href="#prev"]').toggleClass('disabled', !filmStrip.hasPrev());
-        currentFigure = filmStrip.currentFigure;
-        currentFigure.next().children('a[href^="#"]').attr('href', '#next');
-        currentFigure.prev().children('a[href^="#"]').attr('href', '#prev');
+        filmStrip.nextFigure().children('a[href^="#"]').attr('href', '#next');
+        filmStrip.prevFigure().children('a[href^="#"]').attr('href', '#prev');
         if (filmStrip.hasNext()) {
-          return currentFigure.children('a[href^="#"]').attr('href', '#next');
+          return filmStrip.currentFigure.children('a[href^="#"]').attr('href', '#next');
         } else {
-          return currentFigure.children('a[href^="#"]').attr('href', '#prev');
+          return filmStrip.currentFigure.children('a[href^="#"]').attr('href', '#prev');
         }
       }
     };
@@ -117,7 +128,7 @@ Description popup show / hide with animation
     var el;
     filmStrip.transition($(this), e);
     el = $(e.target).closest('.desc');
-    if (el.length) {
+    if (el.size()) {
       return el.animate({
         opacity: 0,
         translate3d: '0,5px,0'
