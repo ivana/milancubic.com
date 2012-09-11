@@ -89,15 +89,19 @@ Description popup show / hide with animation
     FilmStrip.prototype.transition = function(link, e) {
       var currentFigure, method;
       e.preventDefault();
-      method = link.attr('href').replace('#', '');
-      if (!link.hasClass('disabled' || (method === 'next' || method === 'prev'))) {
+      if (!link.hasClass('disabled')) {
+        method = link.attr('href').replace('#', '');
         filmStrip[method]();
         $('.scene-nav').find('a[href="#next"]').toggleClass('disabled', !filmStrip.hasNext());
         $('.scene-nav').find('a[href="#prev"]').toggleClass('disabled', !filmStrip.hasPrev());
         currentFigure = filmStrip.currentFigure;
-        currentFigure.children('a[href^="#"]').attr('href', '#next');
         currentFigure.next().children('a[href^="#"]').attr('href', '#next');
-        return currentFigure.prev().children('a[href^="#"]').attr('href', '#prev');
+        currentFigure.prev().children('a[href^="#"]').attr('href', '#prev');
+        if (filmStrip.hasNext()) {
+          return currentFigure.children('a[href^="#"]').attr('href', '#next');
+        } else {
+          return currentFigure.children('a[href^="#"]').attr('href', '#');
+        }
       }
     };
 
@@ -109,8 +113,18 @@ Description popup show / hide with animation
     return window.filmStrip = filmStrip = new FilmStrip('.filmstrip');
   });
 
-  $(document).on('click', '.scene-nav a, figure a[href^="#"]', function(e) {
-    return filmStrip.transition($(this), e);
+  $(document).on('click', '[href="#next"], [href="#prev"]', function(e) {
+    var el;
+    filmStrip.transition($(this), e);
+    el = $(e.target).closest('.desc');
+    if (el.length) {
+      return el.animate({
+        opacity: 0,
+        translate3d: '0,5px,0'
+      }, 300, 'cubic-bezier(.6, .1, .2, .7)', function() {
+        return el.remove();
+      });
+    }
   });
 
 }).call(this);

@@ -64,21 +64,30 @@ class FilmStrip
 
   transition: (link, e) ->
     e.preventDefault()
-    method = link.attr('href').replace '#', ''
-    if not link.hasClass 'disabled' or method in ['next', 'prev'] # buttons
+    unless link.hasClass 'disabled'
+      method = link.attr('href').replace '#', ''
       filmStrip[method]()
 
       $('.scene-nav').find('a[href="#next"]').toggleClass 'disabled', !filmStrip.hasNext()
       $('.scene-nav').find('a[href="#prev"]').toggleClass 'disabled', !filmStrip.hasPrev()
 
       currentFigure = filmStrip.currentFigure
-      currentFigure.children('a[href^="#"]').attr 'href', '#next'
       currentFigure.next().children('a[href^="#"]').attr 'href', '#next'
       currentFigure.prev().children('a[href^="#"]').attr 'href', '#prev'
+      if filmStrip.hasNext()
+        currentFigure.children('a[href^="#"]').attr 'href', '#next'
+      else
+        currentFigure.children('a[href^="#"]').attr 'href', '#' # what when on last?
 
 $ ->
   window.filmStrip = filmStrip = new FilmStrip('.filmstrip')
 
-$(document).on 'click', '.scene-nav a, figure a[href^="#"]', (e) ->
+$(document).on 'click', '[href="#next"], [href="#prev"]', (e) ->
   filmStrip.transition $(this), e
+
+  # hide popup if go to case study is target
+  el = $(e.target).closest('.desc')
+  if el.length
+    el.animate {opacity: 0, translate3d: '0,5px,0'}, 300, 'cubic-bezier(.6, .1, .2, .7)', ->
+      el.remove()
 
