@@ -121,7 +121,7 @@ $about-pad: 78px;
 }
 .container {
   overflow:hidden;
-  margin-top:-50px;
+  margin-top:-55px;
   > div {
     @extend .centered;
   }
@@ -135,7 +135,7 @@ $about-pad: 78px;
     float: left;
     margin-right:200px;
   }
-  article { float: left; }
+  article { float: left; padding-top:5px; }
 }
 
 /* nav */
@@ -153,7 +153,6 @@ nav li { display:inline; }
 
   a {
     color: rgba(255,255,255,.1);
-    text-shadow:1px 1px 1px rgba(0,0,0,.2);
     .about & { color: rgba(255,255,255,.7); }
 
     &:hover { color:#fff; }
