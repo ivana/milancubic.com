@@ -121,6 +121,7 @@ Description popup show / hide with animation
 
   $(document).on('click', '.scene-nav a', function(e) {
     var link, method;
+    e.preventDefault();
     link = $(e.target);
     if (!link.hasClass('disabled')) {
       method = link.attr('href').replace('#', '');

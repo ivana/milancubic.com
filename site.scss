@@ -18,19 +18,20 @@ h1, h2 { font:inherit; }
 h1 {
   float:left;
   margin-right:15px;
-  font-size:18px; font-weight:600; line-height:1.1;
+  font-size:18px; font-weight:600; line-height:1;
   text-shadow:1px 1px 1px rgba(0,0,0,.4);
   .portfolio & { color:#c5c5c6; }
-  .about & { color:#fff; }
+  .about &, a:hover { color:#fff; }
+  a:active { text-shadow:0 0 4px rgba(255, 255, 255, .5); }
 }
 
 /* links */
 a { color:inherit; text-decoration:none; }
 .with-icon {
-  padding: 2px 18px 0 0;
+  padding: 0 18px 2px 0;
   background: no-repeat right;
 }
-.goto { padding: 2px 18px 0 0; background-image: url(goto-arrow.png); }
+.goto { background-image: url(goto-arrow.png); }
 
 /* site */
 header {
@@ -51,7 +52,7 @@ $about-pad: 78px;
     background-repeat:no-repeat;
     @include background-image(linear-gradient(left, #d42861, #d42861));
     @include background-size(58px 10px);
-    padding-top:50px;
+    padding-top:40px;
   }
 
   article {
@@ -160,12 +161,11 @@ nav li { display:inline; }
   }
   .portfolio & .portfolio a, .about & .about a {
     color:#fff;
-    text-shadow:0 0 4px rgba(255, 255, 255, .8);
+    text-shadow:0 0 4px rgba(255, 255, 255, .5);
   }
   .mail a {
     padding-left: 35px;
-    background: url(envelope.gif) no-repeat;
-    padding-top:1px;
+    background: url(envelope.gif) no-repeat scroll 0 1px transparent;
 
     .about &, &:hover { background-image: url(envelope-white.png); }
   }
@@ -220,7 +220,7 @@ nav li { display:inline; }
   color:#999796;
   overflow:hidden;
 
-  span { display:block; text-transform: uppercase; font-size: 12px; }
+  span { display:block; font-variant:small-caps; font-size: 14px; }
 
   li:first-child a { border-left: 1px solid #e6e6e6; }
   a, li:last-child {
@@ -228,7 +228,7 @@ nav li { display:inline; }
     width: 24.5%;
     border-right: 1px solid #e6e6e6;
     float:left;
-    padding:10px 12px 5px;
+    padding:8px 14px 6px;
 
     &:hover { background:#fafafa; }
   }
