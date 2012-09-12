@@ -84,6 +84,7 @@ $ ->
   window.filmStrip = filmStrip = new FilmStrip('.filmstrip')
 
 $(document).on 'click', '.scene-nav a', (e) ->
+  e.preventDefault()
   link = $(e.target)
   unless link.hasClass 'disabled'
     method = link.attr('href').replace '#', ''

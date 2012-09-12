@@ -134,6 +134,7 @@ $about-pad: 78px;
   figure {
     float: left;
     margin-right:200px;
+    &:hover { cursor: pointer; }
   }
   article { float: left; padding-top:5px; }
 }
@@ -184,7 +185,7 @@ nav li { display:inline; }
     span { display:none; }
   }
   .left a {
-    margin-right:-4px;
+    margin-right:-5px;
     @include border-radius(3px 0 0 3px);
     @include background-image(url(left.png), linear-gradient(#262626, #171717));
 
