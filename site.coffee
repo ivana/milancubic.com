@@ -63,6 +63,7 @@ class FilmStrip
     @moveToFigure @prevFigure()
 
   moveToFigure: (figure) ->
+    return unless figure.size()
     previousOffset = @currentFigure.offset().left
     @currentFigure = figure
     deltaOffset = @currentFigure.offset().left - previousOffset
@@ -142,3 +143,14 @@ $(document).on 'filmstrip:slide', ->
 
   $('.scene-nav').find('a[href="#next"]').toggleClass 'disabled', !filmStrip.hasNext()
   $('.scene-nav').find('a[href="#prev"]').toggleClass 'disabled', !filmStrip.hasPrev()
+
+# keyboard shortcuts
+$(document).on 'keyup', (e) ->
+  if e.keyCode is 37 # left arrow
+    filmStrip.prev()
+  else if e.keyCode is 39 # right arrow
+    filmStrip.next()
+  else if e.keyCode >= 49 and e.keyCode <= 57 # numbers from 1-9
+    index = e.keyCode - 49
+    # move to figure with that position in the filmstrip
+    filmStrip.moveToFigure $('.filmstrip figure').eq(index)
