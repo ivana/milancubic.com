@@ -32,18 +32,18 @@ a { color:inherit; text-decoration:none; }
   background: no-repeat right;
 }
 .goto { background-image: url(goto-arrow.png); }
-.switch {
+.switch a {
   color:#666;
   &:hover, &:active { border-bottom:1px solid #343535; }
 }
 .show, .hide {
   margin-top: -20px;
   position: relative; top: -15px;
-  width:188px;
+  width:202px; padding-bottom:1px;
   a { @extend .switch; }
 }
 .show {
-  left: 798px;
+  left: 782px;
   background-image: url(show.png); background-position:left; padding-left: 22px;
 }
 .hide {
@@ -165,29 +165,42 @@ $about-pad: 78px;
 
 /* cards */
 $card-h: 800px;
-figcaption { padding-bottom:20px; }
-.card {
-  font-size:15px;
-  color:#2c2c2c;
-  background:#1a1b1c;
-
-  @include box-sizing(border-box);
-  border:1px solid black;
-  width:400px; height: $card-h;
+figcaption {
+  padding-bottom:20px;
+  padding-right: 78px;
+}
+.cardwrapper {
+  width:400px; height:$card-h;
+  position:relative;
   margin-left:545px;
-  position:relative; z-index:21;
-
+  -webkit-perspective:1200;
+  -moz-perspective:1200;
+  perspective:1200;
   &:first-child {
     margin-top: -10px;
-    + .card {
+    + .cardwrapper {
       margin-top: -$card-h;
       left:78px; top:10px;
-      color:#333;
-      p { padding:20px 20px 0; }
+      .card .switch { text-align:left; }
     }
-    + .focus { color:#b3b3b3; }
   }
+  z-index:21;
+  &.focus { z-index:22; }
+}
+.card {
+  font-size:15px;
+  color:#8e8e8f;
+  background:#242526;
+  @include box-shadow(inset 0 0 2px #272829, 1px 1px 4px rgba(black, .4));
 
+  opacity:.2;
+  .focus & { opacity:1; }
+
+  @include box-sizing(border-box);
+  height:100%;
+  border:1px solid black;
+
+  > p { padding:20px 20px 0; }
   ol { counter-reset:li; /* Initiate a counter */ }
   li {
     padding:20px;
@@ -197,41 +210,32 @@ figcaption { padding-bottom:20px; }
 
       display:inline-block;
       @include box-sizing(border-box);
-      width:20px; height:18px; text-align:center;
+      width:18px; height:16px; text-align:center;
       @include border-radius(3px);
 
-      border:1px solid #2a2b2c;
-      @include background-image(linear-gradient(#2a2b2c, #292a2c));
-      color:#1b1c1d;
+      border:1px solid #c8c8c8;
+      @include background-image(linear-gradient(#c7c7c8, #b8bec4));
+      color:#393a3b; text-shadow: -1px 0 1px #BBB;
+
+      font-size: 13px; font-weight: 700; line-height:16px;
     }
     p { padding-left:39px; }
   }
   h3 {
-    font-weight:600;
+    color:#b5b5b6;
+    font-weight:600; font-size:15px;
     display: inline-block;
     margin:0 0 20px 16px;
   }
   .switch {
-    float: right;
-    position: relative; right: 20px; top: 760px;
+    display:block;
+    @include box-sizing(border-box);
+    width:100%;
+    padding:20px;
+    text-align:right;
+    position: absolute; left:0; bottom:0;
     font-size:13px; line-height:1;
   }
-  + .card .switch { left:-160px; }
-}
-.focus {
-  @extend .card;
-  z-index:22;
-  @include box-shadow(inset 0 0 2px #272829, 1px 1px 4px rgba(black, .4));
-  color:#8e8e8f;
-  background: rgba(36, 37, 38, 1);
-  &:first-child { background: rgba(36, 37, 38, .95); }
-
-  li:before {
-    border:1px solid #c8c8c8;
-    @include background-image(linear-gradient(#c7c7c8, #b8bec4));
-    color:#393a3b; text-shadow: -1px 0 1px #BBB;
-  }
-  h3 { color:#b5b5b6; }
 }
 .iPhone {
   img, video {
