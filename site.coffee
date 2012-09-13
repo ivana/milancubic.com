@@ -46,13 +46,16 @@ class FilmStrip
     @strip.on 'click', 'figure img, figure video', (e) =>
       targetFigure = $(e.target).closest('figure')
       if targetFigure.size()
-        @moveToFigure targetFigure
+        if @index(targetFigure) is @index(@currentFigure)
+          @next() unless @currentFigure.prev().is('figure')
+        else
+          @moveToFigure targetFigure
 
   figures: ->
     @strip.find('figure')
 
-  index: ->
-    @figures().index(@currentFigure)
+  index: (figure = @currentFigure) ->
+    @figures().index(figure)
 
   next: ->
     @moveToFigure @nextFigure()
