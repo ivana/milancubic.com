@@ -40,22 +40,19 @@ filmStrip = null
 class FilmStrip
   constructor: (strip) ->
     @strip = $(strip)
-    @currentFigure = @figures().first()
+    @currentFigure = @figures().first().addClass 'current'
     @currentPosition = 0
 
     @strip.on 'click', 'figure img, figure video', (e) =>
       targetFigure = $(e.target).closest('figure')
       if targetFigure.size()
-        if @index(targetFigure) is @index(@currentFigure)
-          @next() unless @currentFigure.prev().is('figure')
-        else
-          @moveToFigure targetFigure
+        @moveToFigure targetFigure
 
   figures: ->
     @strip.find('figure')
 
-  index: (figure = @currentFigure) ->
-    @figures().index(figure)
+  index: ->
+    @figures().index(@currentFigure)
 
   next: ->
     @moveToFigure @nextFigure()
@@ -65,7 +62,11 @@ class FilmStrip
   moveToFigure: (figure) ->
     return unless figure.size()
     previousOffset = @currentFigure.offset().left
+
+    @currentFigure.removeClass 'current'
     @currentFigure = figure
+    @currentFigure.addClass 'current'
+
     deltaOffset = @currentFigure.offset().left - previousOffset
     @slideBy deltaOffset
 

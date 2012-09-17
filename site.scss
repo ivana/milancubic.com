@@ -160,6 +160,9 @@ $about-pad: 78px;
     img, video {
       &:hover { cursor: pointer; }
     }
+    &.current {
+      img, video { cursor:default; }
+    }
   }
   article { float: left; padding-top:5px; }
 }
