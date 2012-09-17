@@ -271,7 +271,7 @@ nav li { display:inline; }
     padding-left: 35px;
     background: url(envelope.gif) no-repeat scroll 0 1px transparent;
 
-    .about &, &:hover { background-image: url(envelope-white.png); }
+    .about & { background-image: url(envelope-white.png); }
   }
 }
 
