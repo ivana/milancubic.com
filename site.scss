@@ -138,6 +138,7 @@ $about-pad: 78px;
     border-bottom: 1px dashed transparent;
     a {
       background-image: url(down-arrow.png);
+      &:hover { text-decoration:underline; }
     }
   }
 }
