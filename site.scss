@@ -159,6 +159,7 @@ $about-pad: 78px;
     margin-right:200px;
     img, video {
       &:hover { cursor: pointer; }
+      @include box-shadow (0px 6px 12px 0px rgba(0, 0, 0, .25));
     }
     &.current {
       img, video { cursor:default; }
