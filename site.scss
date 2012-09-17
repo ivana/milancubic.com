@@ -116,7 +116,7 @@ $about-pad: 78px;
     &.popup {
       @include background-image(linear-gradient(rgba(250, 250, 251, .95), rgba(253, 253, 254, .95)));
       @include border-radius(4px);
-      @include box-shadow(1px 0 4px rgba(0,0,0,.4));
+      @include box-shadow(1px 1px 4px rgba(0,0,0,.4));
       h2 { border-color: #ddd;
         a { background-image: url(close.png); }
       }
