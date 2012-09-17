@@ -195,10 +195,12 @@ figcaption {
   font-size:15px;
   color:#8e8e8f;
   background:#242526;
-  @include box-shadow(inset 0 0 2px #272829, 1px 1px 4px rgba(black, .4));
-
+  @include border-radius(4px);
   opacity:.2;
-  .focus & { opacity:1; }
+  .focus & {
+    @include box-shadow(inset 0 0 0 1px rgba(255, 255, 255, .03), 0px 2px 5px 0px rgba(0, 0, 0, .2));
+    opacity:1;
+  }
 
   @include box-sizing(border-box);
   height:100%;
