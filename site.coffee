@@ -41,7 +41,7 @@ filmStrip = null
 class FilmStrip
   constructor: (strip) ->
     @strip = $(strip)
-    @currentFigure = @figures().first().addClass 'current'
+    @currentFigure = @figures().first().addClass 'current' # current does not have the pointer cursor
     @currentPosition = 0
 
     @strip.on 'click', 'figure img, figure video', (e) =>
@@ -104,6 +104,10 @@ $(document).on 'filmstrip:slide', ->
   # keep buttons correctly displayed, depending on the slide position
   $('.scene-nav').find('a[href="#next"]').toggleClass 'disabled', !filmStrip.hasNext()
   $('.scene-nav').find('a[href="#prev"]').toggleClass 'disabled', !filmStrip.hasPrev()
+
+  # play video if in current figure
+  v = filmStrip.currentFigure.children('video')
+  v.get(0).play() if v.size()
 
 
 # keyboard shortcuts
