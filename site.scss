@@ -167,7 +167,8 @@ $about-pad: 78px;
     // background:red;
     img, video {
       &:hover { cursor: pointer; }
-      @include box-shadow (0px 6px 12px 0px rgba(0, 0, 0, .25));
+      // next line causes card swapping animation to lag
+      // @include box-shadow (0px 6px 12px 0px rgba(0, 0, 0, .25));
     }
     &.current {
       img, video { cursor:default; }
