@@ -27,27 +27,34 @@ h1 {
 
 /* links */
 a { color:inherit; text-decoration:none; }
+.switch, .hide, .show, .portfolio h2 {
+  a { color:#666; }
+}
 .with-icon {
   padding: 0 18px 2px 0;
   background: no-repeat right;
 }
 .goto { background-image: url(goto-arrow.png); }
 .switch a {
-  color:#666;
   &:hover, &:active { border-bottom:1px solid #343535; }
 }
 .show, .hide {
-  margin-top: -20px;
-  position: relative; top: -15px;
-  width:202px; padding-bottom:1px;
-  a { @extend .switch; }
+  margin-top: -22px;
+  position: relative; top: -20px;
+  width:220px;
+  a {
+    &:hover, &:active { border-bottom:1px solid #2c2c2d; }
+  }
 }
 .show {
   left: 782px;
-  background-image: url(show.png); background-position:left; padding-left: 22px;
+  background: no-repeat left;
+  background-image: url(show.png);
+  padding-left:22px;
 }
 .hide {
   left: 610px;
+  background: no-repeat right;
   background-image: url(hide.png);
 }
 
@@ -133,7 +140,6 @@ $about-pad: 78px;
   }
 
   h2 {
-    color:#666;
     padding-bottom:10px;
     border-bottom: 1px dashed transparent;
     a {
@@ -157,6 +163,7 @@ $about-pad: 78px;
   figure {
     float: left;
     margin-right:200px;
+    // background:red;
     img, video {
       &:hover { cursor: pointer; }
       @include box-shadow (0px 6px 12px 0px rgba(0, 0, 0, .25));
