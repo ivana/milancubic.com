@@ -29,6 +29,7 @@ $(document).on 'click', '.desc h2 a', (e) ->
   false
 
 $(document).on 'click', '.desc a[href="#next"]', (e) ->
+  e.preventDefault()
   filmStrip.next()
 
 ###
