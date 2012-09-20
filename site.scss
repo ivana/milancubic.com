@@ -105,7 +105,8 @@ $about-pad: 78px;
 
 /* portfolio */
 .portfolio {
-  background-color:#18191a; @include background-image(linear-gradient(left, #111 0, transparent 5%, transparent 95%, #111));
+  background-color:#18191b;
+  // @include background-image(linear-gradient(left, #111 0, #18191b 5%, #18191b 95%, #111));
   color:#303031;
   padding-bottom:500px;
 
