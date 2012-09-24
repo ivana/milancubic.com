@@ -162,3 +162,25 @@ swapCards = (container) ->
           opacity: if losingFocus then backOpacity else 1
         , duration, timerFunction
       , 0
+
+###
+Video Use Cases
+###
+$(document).on 'click', '.focus .card li', (e) ->
+  li = $(e.target).closest('li')
+  li.closest('ol').children('li').removeClass 'active inactive'
+  li.addClass 'active'
+  li.siblings().addClass 'inactive'
+
+  # play video by the position among its siblings (equals li position among its siblings)
+  videos = $(e.target).closest('figure').children('video')
+  videos.each (i) ->
+    video = $(this)
+    unless i is li.index()
+      video.css('display', 'none')
+    else
+      v = video.css('display', 'block').get(0)
+      v.play()
+      video.on 'ended', (e) ->
+        li.closest('ol').children('li').removeClass 'active inactive'
+

@@ -222,8 +222,8 @@ figcaption {
     padding:20px;
 
     &:before {
-      content:counter(li); /* Use the counter as content */
-      counter-increment:li; /* Increment the counter by 1 */
+      content: counter(li); /* Use the counter as content */
+      counter-increment: li; /* Increment the counter by 1 */
 
       display:inline-block;
       @include box-sizing(border-box);
@@ -275,6 +275,9 @@ figcaption {
   img, video {
     width:480px;
     float:left;
+  }
+  video { display:none;
+    &:first-child { display: block; }
   }
 }
 

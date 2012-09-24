@@ -12,9 +12,9 @@
 
   <!-- project slides -->
   <figure>
-    <video width="1024" height="576" poster="" autoplay> <!-- no need for autoplay on others, only if first portfolio slide is video -->
-      <source src="video/Baseball.mp4" type="video/mp4" />
-      <source src="video/Baseball.webm" type="video/webm" />
+    <video width="1024" poster="" autoplay> <!-- only on first portfolio screen video needs autoplay attribute -->
+      <source src="video/Baseball.mp4" type="video/mp4">
+      <source src="video/Baseball.webm" type="video/webm">
     </video>
   </figure>
 
@@ -38,7 +38,16 @@
   </figure>
 
   <figure class="iPhone">
-    <img src="<!-- @path iPhone1p.jpg -->" alt="screenshot description">
+    <video width="640" poster="">
+      <source src="video/01.mov">
+    </video>
+    <video width="640">
+      <source src="video/02.mov">
+    </video>
+    <video width="640">
+      <source src="video/03.mov">
+    </video>
+
     <figcaption>
       <div class="cardwrapper focus"><div class="card">
         <p>It is very convenient to create your agenda for today by tapping the Today icon in the toolbar.</p>
