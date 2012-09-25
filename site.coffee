@@ -105,8 +105,8 @@ $(document).on 'filmstrip:slide', ->
   $('.scene-nav').find('a[href="#next"]').toggleClass 'disabled', !filmStrip.hasNext()
   $('.scene-nav').find('a[href="#prev"]').toggleClass 'disabled', !filmStrip.hasPrev()
 
-  # play video if in current figure
-  v = filmStrip.currentFigure.children('video')
+  # play project intro video if in current figure
+  v = filmStrip.currentFigure.children('.desc + figure video')
   v.get(0).play() if v.size()
 
 
