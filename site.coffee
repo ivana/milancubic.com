@@ -1,4 +1,9 @@
 timerFunction = 'cubic-bezier(.6, .1, .2, .7)'
+$.fx.speeds.medium = 300
+
+$.fn.translateX = ->
+  translateMatch = (this.css($.fx.cssPrefix + 'transform') || '').match(/\((-?\d+)/)
+  if translateMatch then Number translateMatch[1] else 0
 
 ###
 Description popup show / hide with animation
@@ -8,7 +13,7 @@ $(document).on 'click', '.desc h2 a', (e) ->
 
   if el.hasClass 'popup'
     # hide description
-    el.animate {opacity: 0, translate3d: '0,5px,0'}, 300, 'cubic-bezier(.6, .1, .2, .7)', ->
+    el.animate {opacity: 0, translate3d: '0,5px,0'}, 300, timerFunction, ->
       el.remove()
   else
     # show description
@@ -24,7 +29,7 @@ $(document).on 'click', '.desc h2 a', (e) ->
     , 0, null, ->
       el.insertBefore(oldEl).
         toggleClass('popup').
-        animate({opacity: 1, translate3d: '0,0,0'}, 300, 'cubic-bezier(.6, .1, .2, .7)')
+        animate({opacity: 1, translate3d: '0,0,0'}, 300, timerFunction)
 
   false
 
@@ -55,6 +60,9 @@ class FilmStrip
   index: ->
     @figures().index(@currentFigure)
 
+  moveToIndex: (index) ->
+    @moveToFigure @figures().eq(index)
+
   next: ->
     @moveToFigure @nextFigure()
   prev: ->
@@ -62,19 +70,27 @@ class FilmStrip
 
   moveToFigure: (figure) ->
     return unless figure.size()
-    previousOffset = @currentFigure.offset().left
+
+    # some figures may have a temporary offset in the "transform" property
+    # because of shifts that showing cards cause
+    tempOffset = figure.translateX()
+
+    @hideCards() if @cardsVisible()
 
     @currentFigure.removeClass 'current'
+    previousOffset = @currentFigure.offset().left
     @currentFigure = figure
     @currentFigure.addClass 'current'
 
-    deltaOffset = @currentFigure.offset().left - previousOffset
+    deltaOffset = @currentFigure.offset().left - previousOffset - tempOffset
     @slideBy deltaOffset
+
+    @showCards() if @isPhone()
 
   slideBy: (delta) ->
     @strip.trigger('filmstrip:slide')
     @currentPosition -= delta
-    @strip.animate { translate3d: "#{@currentPosition}px,0,0" }, 300, 'cubic-bezier(.6, .1, .2, .7)'
+    @strip.animate { translate3d: "#{@currentPosition}px,0,0" }, 300, timerFunction
 
   hasPrev: ->
     @index() > 0
@@ -87,6 +103,75 @@ class FilmStrip
 
   nextFigure: ->
     @figures().eq(@index() + 1)
+
+  # a collection of all figures left of the current one + current image/video
+  leftElements: ->
+    @figures().slice(0, @index()).add @currentFigure.find('img, video')
+
+  # a collection of all figures right of the current one + current cards
+  rightElements: ->
+    @figures().slice(@index() + 1).add @currentFigure.find('figcaption > div')
+
+  cardsVisible: ->
+    @currentFigure.find('figcaption').css('opacity') > 0
+
+  isPhone: ->
+    @currentFigure.hasClass 'iPhone'
+
+  showCards: ->
+    # pull the cards up to align the top with figure image/video
+    figureHeight = @currentFigure.find('img, video').height()
+    @currentFigure.find('figcaption').css('margin-top', -figureHeight)
+
+    # For iPhone, shift the right part of the filmstrip to the right.
+    # For others, shift the left part of the filmstrip to the left.
+    (if @isPhone() then @rightElements() else @leftElements()).animate
+      translate3d: "#{if @isPhone() then '' else '-'}545px,0,0"
+    , 'medium', timerFunction
+
+    @currentFigure.find('figcaption').animate
+      opacity: 1
+    , 'medium', timerFunction
+
+    @currentFigure.find('.cardwrapper').eq(1).animate
+      translate3d: "-78px,0,0"
+    , (if @isPhone() then 0 else 'medium'), timerFunction
+
+    @currentFigure.find('.show a').animate
+      translate3d: "-233px,0,0"
+      opacity: 0
+    , 'medium', timerFunction, ->
+      $(this).hide()
+
+    @currentFigure.find('.hide a').css({opacity: 0, display: 'inline-block'}).animate
+      translate3d: "-233px,0,0"
+      opacity: 1
+    , 'medium', timerFunction
+
+  hideCards: ->
+    (if @isPhone() then @rightElements() else @leftElements()).animate
+      translate3d: "0,0,0"
+    , 'medium', timerFunction
+
+    @currentFigure.find('figcaption').animate
+      opacity: 0
+    , 'medium', timerFunction
+
+    if not @isPhone()
+      @currentFigure.find('.cardwrapper').eq(1).animate
+        translate3d: "0,0,0"
+      , 'medium', timerFunction
+
+    @currentFigure.find('.show a').css({display: 'inline-block'}).animate
+      translate3d: "0,0,0"
+      opacity: 1
+    , 'medium', timerFunction
+
+    @currentFigure.find('.hide a').animate
+      translate3d: "0,0,0"
+      opacity: 0
+    , 'medium', timerFunction, ->
+      $(this).hide()
 
 $ ->
   window.filmStrip = filmStrip = new FilmStrip('.filmstrip')
@@ -118,8 +203,7 @@ $(document).on 'keyup', (e) ->
     filmStrip.next()
   else if e.keyCode >= 49 and e.keyCode <= 57 # numbers from 1-9
     index = e.keyCode - 49
-    # move to figure with that position in the filmstrip
-    filmStrip.moveToFigure $('.filmstrip figure').eq(index)
+    filmStrip.moveToIndex index
 
 ###
 Card swapping
@@ -136,7 +220,6 @@ $(document).on 'click', 'figure .card', (e) ->
 swapCards = (container) ->
   offset = 125
   deg = 50
-  duration = 300
   scale = .9
 
   cards = $(container).find('.card')
@@ -144,7 +227,7 @@ swapCards = (container) ->
 
   cards.each (i) ->
     card = $(this)
-    first = i is 0
+    first = i isnt 0
     losingFocus = card.parent().hasClass 'focus'
 
     card.animate
@@ -152,7 +235,7 @@ swapCards = (container) ->
       translate3d: "#{ if first then '-' else '' }#{offset}px,0,0"
       scale: scale
       opacity: .5
-    , duration, timerFunction, ->
+    , 'medium', timerFunction, ->
       card.parent().toggleClass 'focus'
       setTimeout ->
         card.animate
@@ -160,8 +243,23 @@ swapCards = (container) ->
           translate3d: '0,0,0'
           scale: 1
           opacity: if losingFocus then backOpacity else 1
-        , duration, timerFunction
+        , 'medium', timerFunction
       , 0
+
+###
+Show / hide cards
+###
+$(document).on 'click', '.show a, .hide a', (e) ->
+  e.preventDefault()
+  link = $(e.target)
+  action = link.closest('p').attr('class')
+  # link.closest('.show, .hide').toggle().siblings('.show, .hide').toggle()
+
+  if action is 'show'
+    filmStrip.showCards()
+  else
+    filmStrip.hideCards()
+
 
 ###
 Video Use Cases

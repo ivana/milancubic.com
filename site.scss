@@ -39,23 +39,29 @@ a { color:inherit; text-decoration:none; }
   &:hover, &:active { border-bottom:1px solid #343535; }
 }
 .show, .hide {
-  margin-top: -22px;
-  position: relative; top: -20px;
-  width:220px;
+  height:33px;
+  margin-top: -33px;
+  text-align: right;
+  padding-right:20px;
   a {
-    &:hover, &:active { border-bottom:1px solid #2c2c2d; }
+    display:inline-block;
+    &:hover span, &:active span {
+      line-height:1;
+      display:inline-block;
+      border-bottom:1px solid #2c2c2d;
+    }
   }
 }
-.show {
-  left: 782px;
+.show a {
   background: no-repeat left;
   background-image: url(show.png);
   padding-left:22px;
 }
-.hide {
-  left: 610px;
+.hide a {
+  padding-right:22px;
   background: no-repeat right;
   background-image: url(hide.png);
+  display:none;
 }
 
 
@@ -158,13 +164,19 @@ $about-pad: 78px;
 .filmstrip {
   @include clearfix;
   width:100000px;
-  position:relative;
+  height:900px;
+  // background:yellow;
+  // position:relative;
 
   figure {
+    // position:relative;
     float: left;
     margin-right:160px;
-    // background:red;
+    // background:darkred;
+    img { display: inline-block; }
     img, video {
+      position: relative;
+      z-index: 23;
       &:hover { cursor: pointer; }
       // @include box-shadow (0px 6px 12px 0px rgba(0, 0, 0, .25));
     }
@@ -172,27 +184,32 @@ $about-pad: 78px;
       img, video { cursor:default; }
     }
   }
-  article { float: left; padding-top:5px; }
+  article {
+    float: left;
+    padding-top:5px;
+    // background: darkblue;
+  }
 }
 
 /* cards */
 $card-h: 800px;
 figcaption {
-  padding-bottom: 100px;
-  padding-right: 78px;
+  opacity:0;
+  margin-top: -768px;
 }
 .cardwrapper {
   width:400px; height:$card-h;
+  margin: 0 0 0 auto;
   position:relative;
-  margin-left:545px;
+  // top: 0;
+  // right: 0;
   -webkit-perspective:1200;
   -moz-perspective:1200;
   perspective:1200;
   &:first-child {
-    margin-top: -10px;
+    // margin-top: -10px;
     + .cardwrapper {
-      margin-top: -$card-h;
-      left:78px; top:10px;
+      margin-top: -$card-h - 10px;
       .card .switch { text-align:left; }
     }
   }
@@ -204,6 +221,7 @@ figcaption {
   color: #8e8e8f;
   background: #242526;
   @include border-radius(4px);
+  overflow:hidden;
   opacity: .2;
 
   .focus & {
@@ -272,8 +290,8 @@ figcaption {
 }
 .iPhone {
   img, video {
-    width:480px;
-    float:left;
+    // float:left;
+    // position:relative; z-index:22; /* should be on top of figcaption */
   }
   video { display:none;
     &:first-child { display: block; }

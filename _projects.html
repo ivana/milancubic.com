@@ -12,15 +12,17 @@
 
   <!-- project slides -->
   <figure>
-    <video width="1024" poster="" autoplay> <!-- only on first portfolio screen video needs autoplay attribute -->
+    <video width="1024" poster=""> <!-- only on first portfolio screen video needs autoplay attribute -->
       <source src="video/Baseball.mp4" type="video/mp4">
       <source src="video/Baseball.webm" type="video/webm">
     </video>
   </figure>
 
-  <figure>
-    <p class="show"><a href="#"><span>Show</span> description and use cases</a></p>
-    <img src="<!-- @path iPad1.jpg -->" alt="screenshot description">
+  <figure class="iPad">
+    <p class="show"><a href="#"><span>Show description and use cases</span></a></p>
+    <p class="hide"><a href="#"><span>Hide description and use cases</span></a></p>
+    <img width=1024 src="<!-- @path iPad1.jpg -->" alt="screenshot description">
+    <!-- @include _figcaption.html -->
   </figure>
 </article>
 
@@ -34,24 +36,36 @@
   </div>
 
   <figure>
-    <img src="<!-- @path scr1.png -->" alt="screenshot description">
+    <img width=1024 src="<!-- @path scr1.png -->" alt="screenshot description">
   </figure>
 
   <figure class="iPhone">
-    <video width="640" poster="">
+    <video width="480" poster="">
       <source src="video/01.mov">
     </video>
-    <video width="640">
+    <video width="480">
       <source src="video/02.mov">
     </video>
-    <video width="640">
+    <video width="480">
       <source src="video/03.mov">
     </video>
     <!-- @include _figcaption.html -->
   </figure>
 
+  <figure>
+    <img width=1024 src="<!-- @path scr1.png -->" alt="screenshot description 2">
+  </figure>
+
   <figure class="iPhone">
-    <img src="<!-- @path iPhone2p.jpg -->" alt="screenshot description 2">
+    <video width="480" poster="">
+      <source src="video/01.mov">
+    </video>
+    <video width="480">
+      <source src="video/02.mov">
+    </video>
+    <video width="480">
+      <source src="video/03.mov">
+    </video>
     <!-- @include _figcaption.html -->
   </figure>
 
