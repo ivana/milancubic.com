@@ -108,7 +108,6 @@ $about-pad: 78px;
   background-color:#18191b;
   // @include background-image(linear-gradient(left, #111 0, #18191b 5%, #18191b 95%, #111));
   color:#303031;
-  padding-bottom:500px;
 
   header {
     background-image: url(grainy-glow.jpg);
@@ -163,7 +162,7 @@ $about-pad: 78px;
 
   figure {
     float: left;
-    margin-right:200px;
+    margin-right:160px;
     // background:red;
     img, video {
       &:hover { cursor: pointer; }
