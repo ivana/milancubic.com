@@ -90,7 +90,9 @@ class FilmStrip
   slideBy: (delta) ->
     @strip.trigger('filmstrip:slide')
     @currentPosition -= delta
-    @strip.animate { translate3d: "#{@currentPosition}px,0,0" }, 'medium', timerFunction
+    # NOTE: translate3d is smoother but makes large images in filmstrip blink annoyingly.
+    # @strip.animate { translate3d: "#{@currentPosition}px,0,0" }, 'medium', timerFunction
+    @strip.animate { marginLeft: @currentPosition }, 'medium', timerFunction
 
   hasPrev: ->
     @index() > 0
