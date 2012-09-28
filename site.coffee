@@ -50,6 +50,7 @@ class FilmStrip
     @currentPosition = 0
 
     @showLabels()
+    @playVideo()
 
     @strip.on 'click', 'figure img, figure video', (e) =>
       targetFigure = $(e.target).closest('figure')
@@ -90,6 +91,10 @@ class FilmStrip
 
     @showCards() if @isPhone()
     @showLabels()
+
+    setTimeout =>
+      @playVideo()
+    , $.fx.speeds.medium
 
   slideBy: (delta) ->
     @strip.trigger('filmstrip:slide')
@@ -189,6 +194,11 @@ class FilmStrip
     , 'medium', timerFunction, ->
       $(this).hide()
 
+  playVideo: ->
+    video = @currentFigure.children('.desc + figure video')
+    video.get(0).play() if video.size()
+
+
 $ ->
   window.filmStrip = filmStrip = new FilmStrip('.filmstrip')
 
@@ -208,10 +218,6 @@ $(document).on 'filmstrip:slide', ->
   # keep buttons correctly displayed, depending on the slide position
   $('.scene-nav').find('a[href="#next"]').toggleClass 'disabled', !filmStrip.hasNext()
   $('.scene-nav').find('a[href="#prev"]').toggleClass 'disabled', !filmStrip.hasPrev()
-
-  # TODO: play project intro video if in current figure
-  # v = filmStrip.currentFigure.children('.desc + figure video')
-  # v.get(0).play() if v.size()
 
 $(document).on 'keydown', (e) ->
   # holding Shift pressed makes animations slower for debugging
