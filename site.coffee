@@ -195,9 +195,9 @@ $(document).on 'filmstrip:slide', ->
   $('.scene-nav').find('a[href="#next"]').toggleClass 'disabled', !filmStrip.hasNext()
   $('.scene-nav').find('a[href="#prev"]').toggleClass 'disabled', !filmStrip.hasPrev()
 
-  # play project intro video if in current figure
-  v = filmStrip.currentFigure.children('.desc + figure video')
-  v.get(0).play() if v.size()
+  # TODO: play project intro video if in current figure
+  # v = filmStrip.currentFigure.children('.desc + figure video')
+  # v.get(0).play() if v.size()
 
 $(document).on 'keydown', (e) ->
   # holding Shift pressed makes animations slower for debugging
