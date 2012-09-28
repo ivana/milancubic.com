@@ -13,7 +13,7 @@ $(document).on 'click', '.desc h2 a', (e) ->
 
   if el.hasClass 'popup'
     # hide description
-    el.animate {opacity: 0, translate3d: '0,5px,0'}, 300, timerFunction, ->
+    el.animate {opacity: 0, translate3d: '0,5px,0'}, 'medium', timerFunction, ->
       el.remove()
   else
     # show description
@@ -29,7 +29,7 @@ $(document).on 'click', '.desc h2 a', (e) ->
     , 0, null, ->
       el.insertBefore(oldEl).
         toggleClass('popup').
-        animate({opacity: 1, translate3d: '0,0,0'}, 300, timerFunction)
+        animate({opacity: 1, translate3d: '0,0,0'}, 'medium', timerFunction)
 
   false
 
@@ -90,7 +90,7 @@ class FilmStrip
   slideBy: (delta) ->
     @strip.trigger('filmstrip:slide')
     @currentPosition -= delta
-    @strip.animate { translate3d: "#{@currentPosition}px,0,0" }, 300, timerFunction
+    @strip.animate { translate3d: "#{@currentPosition}px,0,0" }, 'medium', timerFunction
 
   hasPrev: ->
     @index() > 0
@@ -194,6 +194,10 @@ $(document).on 'filmstrip:slide', ->
   v = filmStrip.currentFigure.children('.desc + figure video')
   v.get(0).play() if v.size()
 
+$(document).on 'keydown', (e) ->
+  # holding Shift pressed makes animations slower for debugging
+  if e.keyCode is 16 # Shift
+    $.fx.speeds.medium = 3000
 
 # keyboard shortcuts
 $(document).on 'keyup', (e) ->
@@ -204,6 +208,8 @@ $(document).on 'keyup', (e) ->
   else if e.keyCode >= 49 and e.keyCode <= 57 # numbers from 1-9
     index = e.keyCode - 49
     filmStrip.moveToIndex index
+  else if e.keyCode is 16 # Shift
+    $.fx.speeds.medium = 300
 
 ###
 Card swapping
