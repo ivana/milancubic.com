@@ -125,7 +125,7 @@ $about-pad: 78px;
     font-size:15px;
     @include box-sizing(border-box);
     width:320px; padding:12px 15px; margin: 0px 0 -7px 20px;
-    position:relative; z-index:11;
+    position:relative; z-index:30;
     &.popup {
       @include background-image(linear-gradient(rgba(250, 250, 251, .95), rgba(253, 253, 254, .95)));
       @include border-radius(4px);
