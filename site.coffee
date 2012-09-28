@@ -49,6 +49,8 @@ class FilmStrip
     @currentFigure = @figures().first().addClass 'current' # current does not have the pointer cursor
     @currentPosition = 0
 
+    @showLabels()
+
     @strip.on 'click', 'figure img, figure video', (e) =>
       targetFigure = $(e.target).closest('figure')
       if targetFigure.size()
@@ -76,6 +78,7 @@ class FilmStrip
     tempOffset = figure.translateX()
 
     @hideCards() if @cardsVisible()
+    @hideLabels()
 
     @currentFigure.removeClass 'current'
     previousOffset = @currentFigure.offset().left
@@ -86,6 +89,7 @@ class FilmStrip
     @slideBy deltaOffset
 
     @showCards() if @isPhone()
+    @showLabels()
 
   slideBy: (delta) ->
     @strip.trigger('filmstrip:slide')
@@ -119,6 +123,16 @@ class FilmStrip
 
   isPhone: ->
     @currentFigure.hasClass 'iPhone'
+
+  currentLabels: ->
+    @currentFigure.children('.show, .hide').add @currentFigure.prev('.desc')
+
+  showLabels: ->
+    @currentLabels().css(visibility: 'visible', opacity: 0).animate(opacity: 1 , 'medium', timerFunction)
+
+  hideLabels: ->
+    @currentLabels().animate opacity: 0, 'medium', timerFunction, ->
+      $(this).css('visibility', 'hidden')
 
   showCards: ->
     # pull the cards up to align the top with figure image/video
@@ -264,7 +278,6 @@ $(document).on 'click', '.show a, .hide a', (e) ->
   e.preventDefault()
   link = $(e.target)
   action = link.closest('p').attr('class')
-  # link.closest('.show, .hide').toggle().siblings('.show, .hide').toggle()
 
   if action is 'show'
     filmStrip.showCards()
