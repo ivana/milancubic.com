@@ -178,6 +178,9 @@ class FilmStrip
 $ ->
   window.filmStrip = filmStrip = new FilmStrip('.filmstrip')
 
+  if window.location.host is 'hammr.co'
+    $('a[href="/"]').attr 'href', 'index.html'
+
 $(document).on 'click', '.scene-nav a', (e) ->
   e.preventDefault()
   link = $(e.target)
