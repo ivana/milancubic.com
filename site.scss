@@ -23,7 +23,9 @@ body {
 }
 .centered {
   margin:0 auto; width: $site-w;
+  @include screen(tablet) { width:960px; }
 }
+
 
 /* headings */
 h1, h2 { font:inherit; }
@@ -169,7 +171,7 @@ $about-pad: 78px;
   }
 }
 .container {
-  overflow:hidden;
+  overflow:hidden; height:900px;
   margin-top:-55px;
   > div {
     @extend .centered;
@@ -178,7 +180,7 @@ $about-pad: 78px;
 .filmstrip {
   @include clearfix;
   width:100000px;
-  height:900px;
+  // height:900px;
 
   figure {
     -webkit-transform: translateZ(0);
@@ -191,6 +193,7 @@ $about-pad: 78px;
       z-index: 23;
       &:hover { cursor: pointer; }
       // @include box-shadow (0px 6px 12px 0px rgba(0, 0, 0, .25));
+      @include screen(tablet) { width:960px; }
     }
     &.current {
       img, video { cursor:default; }
@@ -207,7 +210,7 @@ $about-pad: 78px;
 $card-h: 800px;
 figcaption {
   opacity:0;
-  margin-top: -768px;
+  // margin-top: -768px;
 }
 .cardwrapper {
   width:400px; height:$card-h;
@@ -233,7 +236,6 @@ figcaption {
   color: #8e8e8f;
   background: #242526;
   @include border-radius(4px);
-  overflow:hidden;
   opacity: .2;
   :not(.focus) & { cursor: pointer; }
 
@@ -302,8 +304,10 @@ figcaption {
     font-size:13px; line-height:1;
   }
 }
-.iPhone {
-  video { display:none;
+figure.iPhone {
+  video {
+    display:none;
+    @include screen(tablet) { width:412px; }
     &:first-child { display: block; }
   }
 }
