@@ -171,6 +171,7 @@ $about-pad: 78px;
   // position:relative;
 
   figure {
+    -webkit-transform: translateZ(0);
     // position:relative;
     float: left;
     margin-right:160px;
