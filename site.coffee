@@ -275,7 +275,7 @@ swapCards = (container) ->
           scale: 1
           opacity: if losingFocus then backOpacity else 1
         , 'medium', timerFunction
-      , 0
+      , 20
 
 ###
 Show / hide cards
