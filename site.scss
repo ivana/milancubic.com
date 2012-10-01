@@ -179,16 +179,12 @@ $about-pad: 78px;
   @include clearfix;
   width:100000px;
   height:900px;
-  // background:yellow;
-  // position:relative;
 
   figure {
     -webkit-transform: translateZ(0);
-    // position:relative;
     float: left;
     margin-right:200px;
     @include screen(small-screen) { margin-right:120px; }
-    // background:darkred;
     img { display: inline-block; }
     img, video {
       position: relative;
@@ -307,10 +303,6 @@ figcaption {
   }
 }
 .iPhone {
-  img, video {
-    // float:left;
-    // position:relative; z-index:22; /* should be on top of figcaption */
-  }
   video { display:none;
     &:first-child { display: block; }
   }
