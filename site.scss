@@ -3,6 +3,18 @@
 ol, ul { list-style-type:none; }
 b, strong { font-weight:600; }
 
+@mixin screen($type) {
+  @if $type == phone {
+    @media only screen and (max-width:480px) { @content }
+  }
+  @else if $type == tablet {
+    @media only screen and (max-width:1024px) { @content }
+  }
+  @else if $type == small-screen {
+    @media only screen and (max-width:1440px) { @content }
+  }
+}
+
 /* layout */
 $header-h: 258px;
 $site-w: 1024px;
