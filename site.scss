@@ -186,7 +186,8 @@ $about-pad: 78px;
     -webkit-transform: translateZ(0);
     // position:relative;
     float: left;
-    margin-right:160px;
+    margin-right:200px;
+    @include screen(small-screen) { margin-right:120px; }
     // background:darkred;
     img { display: inline-block; }
     img, video {
