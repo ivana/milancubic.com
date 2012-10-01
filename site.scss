@@ -404,4 +404,5 @@ nav li { display:inline; }
     display: block;
     &:active { @include box-shadow(inset 0 0 8px #e5e5e5); background:#fafafa; }
   }
+  li:last-child a { padding:0; }
 }
