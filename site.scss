@@ -10,7 +10,7 @@ b, strong { font-weight:600; }
   @else if $type == tablet {
     @media only screen and (max-width:1024px) { @content }
   }
-  @else if $type == small-screen {
+  @else if $type == small {
     @media only screen and (max-width:1440px) { @content }
   }
 }
@@ -186,7 +186,7 @@ $about-pad: 78px;
     -webkit-transform: translateZ(0);
     float: left;
     margin-right:200px;
-    @include screen(small-screen) { margin-right:120px; }
+    @include screen(small) { margin-right:120px; }
     img { display: inline-block; }
     img, video {
       position: relative;
