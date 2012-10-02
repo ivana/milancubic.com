@@ -139,7 +139,7 @@ class FilmStrip
 
   showCards: ->
     # pull the cards up to align the top with figure image/video
-    figureHeight = @currentFigure.find('img, video').height()
+    figureHeight = (@currentFigure.find('img, video').filter -> $(this).css('display') != 'none').height()
     @currentFigure.find('figcaption').css('margin-top', -figureHeight)
 
     # For iPhone, shift the right part of the filmstrip to the right.
