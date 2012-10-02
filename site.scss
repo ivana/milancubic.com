@@ -128,12 +128,10 @@ $about-pad: 78px;
 /* portfolio */
 .portfolio {
   background-color:#18191b;
-  // @include background-image(linear-gradient(left, #111 0, #18191b 5%, #18191b 95%, #111));
   color:#303031;
 
   header {
     background-image: url(grainy-glow.jpg);
-    // @include background-image(radial-gradient(top center, circle cover, #26282a, #18191a));
   }
   header, footer { @extend .centered; }
 
@@ -202,7 +200,6 @@ $about-pad: 78px;
   article {
     float: left;
     padding-top:5px;
-    // background: darkblue;
   }
 }
 
