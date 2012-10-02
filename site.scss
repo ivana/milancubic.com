@@ -190,8 +190,11 @@ $about-pad: 78px;
       position: relative;
       z-index: 23;
       &:hover { cursor: pointer; }
-      // @include box-shadow (0px 6px 12px 0px rgba(0, 0, 0, .25));
-      @include screen(tablet) { width:960px; }
+      @include screen(tablet) { width: 960px; }
+    }
+    video {
+      // would be nice to have the same dimensions for all videos
+      @include screen(tablet) { height: 540px; }
     }
     &.current {
       img, video { cursor:default; }
@@ -304,7 +307,7 @@ figcaption {
 figure.iPhone {
   video {
     display:none;
-    @include screen(tablet) { width:412px; }
+    @include screen(tablet) { width:412px; height:618px; }
     &:first-child { display: block; }
   }
 }
