@@ -157,13 +157,13 @@ class FilmStrip
     , (if @isPhone() then 0 else 'medium'), timerFunction
 
     @currentFigure.find('.show a').animate
-      translate3d: "-233px,0,0"
+      translate3d: "-220px,0,0"
       opacity: 0
     , 'medium', timerFunction, ->
       $(this).hide()
 
     @currentFigure.find('.hide a').css({opacity: 0, display: 'inline-block'}).animate
-      translate3d: "-233px,0,0"
+      translate3d: "-220px,0,0"
       opacity: 1
     , 'medium', timerFunction
 
