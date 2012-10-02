@@ -13,6 +13,9 @@ b, strong { font-weight:600; }
   @else if $type == small {
     @media only screen and (max-width:1440px) { @content }
   }
+  @else if $type == normal {
+    @media only screen and (min-width:1200px) { @content }
+  }
 }
 
 /* layout */
@@ -240,9 +243,15 @@ figcaption {
   :not(.focus) & { cursor: pointer; }
 
   .focus & {
-    @include box-shadow(inset 0 0 0 1px rgba(255, 255, 255, .03), 0px 2px 5px 0px rgba(0, 0, 0, .2));
     opacity:1;
     cursor: default;
+
+    // no nested includes:
+    // @include box-shadow(inset 0 0 0 1px rgba(255, 255, 255, .03), 0px 2px 5px 0px rgba(0, 0, 0, .2));
+    @include screen(normal) {
+      -webkit-box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03), 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03), 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
+    }
   }
 
   @include box-sizing(border-box);
