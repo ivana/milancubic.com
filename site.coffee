@@ -74,6 +74,9 @@ class FilmStrip
   moveToFigure: (figure) ->
     return unless figure.size()
 
+    previousOffset = @currentFigure.offset().left
+    return if figure.offset().left == previousOffset
+
     # some figures may have a temporary offset in the "transform" property
     # because of shifts that showing cards cause
     tempOffset = figure.translateX()
@@ -82,7 +85,6 @@ class FilmStrip
     @hideLabels()
 
     @currentFigure.removeClass 'current'
-    previousOffset = @currentFigure.offset().left
     @currentFigure = figure
     @currentFigure.addClass 'current'
 
