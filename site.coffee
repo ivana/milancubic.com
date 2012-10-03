@@ -87,6 +87,7 @@ class FilmStrip
     @currentFigure.addClass 'current'
 
     deltaOffset = @currentFigure.offset().left - previousOffset - tempOffset
+    deltaOffset += 1 if $.browser.webkit # weird sliding 1px too much bug
     @slideBy deltaOffset
 
     @showCards() if @isPhone()
