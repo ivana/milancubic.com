@@ -80,6 +80,7 @@ class FilmStrip
     # some figures may have a temporary offset in the "transform" property
     # because of shifts that showing cards cause
     tempOffset = figure.translateX()
+    if tempOffset == 1 then tempOffset = 0 # weird webkit bug
 
     @hideCards() if @cardsVisible()
     @hideLabels()
@@ -89,7 +90,6 @@ class FilmStrip
     @currentFigure.addClass 'current'
 
     deltaOffset = @currentFigure.offset().left - previousOffset - tempOffset
-    deltaOffset += 1 if $.browser.webkit # weird sliding 1px too much bug
     @slideBy deltaOffset
 
     @showCards() if @isPhone()
