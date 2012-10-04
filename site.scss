@@ -187,8 +187,8 @@ $about-pad: 78px;
   figure {
     -webkit-transform: translateZ(0);
     float: left;
-    margin-right:200px;
-    @include screen(small) { margin-right:120px; }
+    margin-right:150px;
+    // @include screen(small) { margin-right:120px; }
     img { display: inline-block; }
     img, video {
       position: relative;
