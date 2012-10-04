@@ -203,9 +203,9 @@ class FilmStrip
 $ ->
   window.filmStrip = filmStrip = new FilmStrip('.filmstrip')
 
-  if window.location.host is 'hammr.co'
-    $('a[href="/"]').attr 'href', 'index.html'
-
+###
+Prev / Next buttons
+###
 $(document).on 'click', '.scene-nav a', (e) ->
   e.preventDefault()
   link = $(e.target)
@@ -220,6 +220,9 @@ $(document).on 'filmstrip:slide', ->
   $('.scene-nav').find('a[href="#next"]').toggleClass 'disabled', !filmStrip.hasNext()
   $('.scene-nav').find('a[href="#prev"]').toggleClass 'disabled', !filmStrip.hasPrev()
 
+###
+Keyboard
+###
 $(document).on 'keydown', (e) ->
   # holding Shift pressed makes animations slower for debugging
   if e.keyCode is 16 # Shift
